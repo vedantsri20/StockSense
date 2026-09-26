@@ -1,0 +1,19 @@
+{
+  "test_product": {
+    "name": "Steel Rods",
+    "sku": "STL-001",
+    "category": "Raw Material",
+    "uom": "kg",
+    "initialStock": 0
+  },
+  "test_receipt": {
+    "productSku": "STL-001",
+    "quantity": 100,
+    "supplier": "Tata Steel"
+  },
+  "test_delivery": {
+    "productSku": "STL-001",
+    "quantity": 20,
+    "customer": "ABC Constructions"
+  }
+}
