@@ -2,6 +2,7 @@ const express = require("express");
 
 const receiptRoutes = require("./routes/receiptRoutes");
 const issueRoutes = require("./routes/issueRoutes");
+const inventoryRoutes = require("./routes/inventoryRoutes");
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/receipts", receiptRoutes);
 app.use("/api/issues", issueRoutes);
+app.use("/api/inventory", inventoryRoutes);
 
 const PORT = 5000;
 
