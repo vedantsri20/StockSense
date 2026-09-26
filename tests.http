@@ -1,0 +1,61 @@
+### 1. Test Server Health
+GET http://localhost:5000/
+
+### 2. Get All Products
+GET http://localhost:5000/api/products
+
+### 3. Create a New Product (PDF Step 1)
+POST http://localhost:5000/api/products
+Content-Type: application/json
+
+{
+  "name": "Steel Rods",
+  "sku": "STL-001",
+  "category": "Raw Material",
+  "uom": "kg",
+  "initialStock": 0
+}
+
+### 4. Receive Stock (Receipt Flow: +100 kg)
+POST http://localhost:5000/api/receipts
+Content-Type: application/json
+
+{
+  "productSku": "STL-001",
+  "quantity": 100,
+  "supplier": "Tata Steel"
+}
+
+### 5. Internal Transfer (Main Store -> Production Rack: 20 kg)
+POST http://localhost:5000/api/transfers
+Content-Type: application/json
+
+{
+  "productSku": "STL-001",
+  "fromLocation": "Main Store",
+  "toLocation": "Production Rack",
+  "quantity": 20
+}
+
+### 6. Deliver Stock (Delivery Flow: -20 kg)
+POST http://localhost:5000/api/deliveries
+Content-Type: application/json
+
+{
+  "productSku": "STL-001",
+  "quantity": 20,
+  "customer": "ABC Constructions"
+}
+
+### 7. Stock Adjustment (Damaged: -3 kg)
+POST http://localhost:5000/api/adjustments
+Content-Type: application/json
+
+{
+  "productSku": "STL-001",
+  "physicalCount": 77,
+  "reason": "3 kg damaged"
+}
+
+### 8. View Move History / Stock Ledger
+GET http://localhost:5000/api/ledger
