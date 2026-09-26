@@ -27,6 +27,26 @@ const userSchema = new mongoose.Schema(
       enum: ["admin", "manager", "staff"],
       default: "staff",
     },
+
+    phone: {
+      type: String,
+      default: "",
+    },
+
+    warehouse: {
+      type: String,
+      default: "Main Warehouse",
+    },
+
+    resetOtp: {
+      type: String,
+      default: null,
+    },
+
+    resetOtpExpires: {
+      type: Date,
+      default: null,
+    },
   },
   {
     timestamps: true,

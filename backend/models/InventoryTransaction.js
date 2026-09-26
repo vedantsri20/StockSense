@@ -8,16 +8,64 @@ const inventoryTransactionSchema = new mongoose.Schema(
       required: true,
     },
 
+    productName: {
+      type: String,
+      default: "",
+    },
+
+    productSku: {
+      type: String,
+      default: "",
+    },
+
     type: {
       type: String,
-      enum: ["IN", "OUT"],
+      enum: ["IN", "OUT", "TRANSFER", "ADJUSTMENT"],
       required: true,
+    },
+
+    operationType: {
+      type: String,
+      enum: ["Receipt", "Delivery", "Internal Transfer", "Inventory Adjustment"],
+      default: "Receipt",
+    },
+
+    source: {
+      type: String,
+      trim: true,
+      default: "Vendor / Supplier",
+    },
+
+    destination: {
+      type: String,
+      trim: true,
+      default: "Main Warehouse",
     },
 
     quantity: {
       type: Number,
       required: true,
-      min: 1,
+    },
+
+    beforeStock: {
+      type: Number,
+      default: 0,
+    },
+
+    afterStock: {
+      type: Number,
+      default: 0,
+    },
+
+    reference: {
+      type: String,
+      trim: true,
+      default: "",
+    },
+
+    status: {
+      type: String,
+      default: "Completed",
     },
 
     note: {
@@ -27,9 +75,8 @@ const inventoryTransactionSchema = new mongoose.Schema(
     },
 
     performedBy: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      default: null,
+      type: String,
+      default: "Admin",
     },
   },
   {

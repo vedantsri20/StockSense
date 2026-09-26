@@ -22,9 +22,21 @@ const productSchema = new mongoose.Schema(
       trim: true,
     },
 
+    uom: {
+      type: String,
+      trim: true,
+      default: "Units", // Units, Kg, Liters, Boxes, Pallets, Meters
+    },
+
     price: {
       type: Number,
       required: true,
+      min: 0,
+    },
+
+    costPrice: {
+      type: Number,
+      default: 0,
       min: 0,
     },
 
@@ -41,7 +53,25 @@ const productSchema = new mongoose.Schema(
       min: 0,
     },
 
+    reorderQuantity: {
+      type: Number,
+      default: 20,
+      min: 0,
+    },
+
     supplier: {
+      type: String,
+      trim: true,
+      default: "",
+    },
+
+    warehouse: {
+      type: String,
+      trim: true,
+      default: "Main Warehouse",
+    },
+
+    description: {
       type: String,
       trim: true,
       default: "",
