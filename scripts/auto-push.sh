@@ -10,5 +10,5 @@ fi
 
 git commit -m "Auto backup: $(date '+%Y-%m-%d %H:%M:%S')"
 
-git push origin backendø
+git push origin backend
 
